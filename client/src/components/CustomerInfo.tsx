@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { SyntheticEvent, useState } from 'react';
+import { SyntheticEvent, useEffect, useState } from 'react';
 import { ICustomer } from '../interface';
 import { getBasePath } from '../utils/PathHelper';
 
-const CustomerInfo = () => {
+const CustomerInfo = ({ setSelectedCustomer }: any) => {
   const [customerName, setCustomerName] = useState('');
   const [companyName, setCompanyName] = useState('');
   const [email, setEmail] = useState('');
@@ -26,6 +26,10 @@ const CustomerInfo = () => {
       customer,
     });
   };
+
+  useEffect(() => {
+    setSelectedCustomer(customer);
+  });
 
   return (
     <div className="ui vertical left aligned footer segment">
@@ -113,7 +117,9 @@ const CustomerInfo = () => {
             style={{ marginTop: '8px' }}
             onClick={onButtonClick}
           >
-            Potvrdit údaje
+            {customer.customerName === ''
+              ? 'Potvrdit údaje'
+              : 'Údaje byly odeslány'}
           </button>
         </form>
       </div>

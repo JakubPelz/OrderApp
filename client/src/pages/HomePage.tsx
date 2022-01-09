@@ -1,12 +1,20 @@
-import React from 'react';
+import { useState } from 'react';
+import { ICustomer } from '../interface';
+import { Link } from 'react-router-dom';
 
 import CustomerInfo from '../components/CustomerInfo';
 import Products from '../components/Products';
 
-const HomePage = () => {
+const HomePage = ({ setUserSelected }: any) => {
+  const [selectedCustomer, setSelectedCustomer] = useState<ICustomer>();
+  const [selectedProducts, setSelectedProducts] = useState();
+
+  const onClick = () => {
+    setUserSelected({ selectedProducts, selectedCustomer });
+  };
+
   return (
     <>
-      {' '}
       <div
         className="ui inverted vertical masthead segment"
         style={{ minHeight: '80px' }}
@@ -16,30 +24,23 @@ const HomePage = () => {
         </h3>
       </div>
       <div className="ui center aligned container">
-        <CustomerInfo />
+        <CustomerInfo setSelectedCustomer={setSelectedCustomer} />
       </div>
-      <div className="ui inverted vertical masthead center aligned segment">
-        <div className="ui center aligned container">
-          <Products />
-          <h3>Ceny světelných mečů jsou bez DPH.</h3>
-        </div>
+
+      <div className="ui center aligned container" style={{ margin: '0px' }}>
+        <Products setSelectedProducts={setSelectedProducts} />
       </div>
-      <div className="ui container" style={{ minHeight: '410px' }}>
-        <div className="ui vertical left aligned footer segment">
-          <div className="center aligned container">
-            <form className="ui form">
-              <h2 style={{ marginTop: '20px' }}>Vaše objednávka</h2>
-              {/*  <div className="ui stackable inverted divided grid">
-                <CustomerReInfo selectedMode={selectedMode} />
-                <ProductsSelected
-                  selectedProduct={selectedProduct}
-                  product={Product}
-                  selectedMode={selectedMode}
-                />
-              </div> */}
-            </form>
-          </div>
-        </div>
+      <div className="ui center aligned container">
+        <Link to="/potvrzeni-objednavky">
+          <button
+            className="ui button"
+            type="submit"
+            style={{ margin: '15px' }}
+            onClick={onClick}
+          >
+            Potvrdit Objednávku
+          </button>
+        </Link>
       </div>
     </>
   );

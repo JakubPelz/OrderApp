@@ -26,8 +26,6 @@ const Product = [
   },
 ];
 
-const Customer = {};
-
 export const postClient = async (req: Request, res: Response) => {};
 
 export const GetClient = async (req: Request, res: Response) => {

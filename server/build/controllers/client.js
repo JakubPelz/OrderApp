@@ -60,7 +60,6 @@ var Product = [
         price: 895,
     },
 ];
-var Customer = {};
 var postClient = function (req, res) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
     return [2 /*return*/];
 }); }); };
