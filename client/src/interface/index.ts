@@ -1,0 +1,20 @@
+export interface IProducts {
+  products: IOneProduct[];
+}
+
+export interface IOneProduct {
+  title: string;
+  color: string;
+  properities: string;
+  image: string;
+  price: number;
+}
+
+export interface ICustomer {
+  customerName: string;
+  companyName: string;
+  email: string;
+  city: string;
+  street: string;
+  zipCode: string;
+}

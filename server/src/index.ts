@@ -7,7 +7,7 @@ export const mongoose = require('mongoose');
 require('dotenv').config();
 
 // bring routes
-
+import { routes } from './routes/routes';
 // app
 const app = express();
 
@@ -38,9 +38,10 @@ app.use(
 );
 
 // import Routes
+routes(app);
 
 // port
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}.`);
 });
