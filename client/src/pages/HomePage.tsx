@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ICustomer } from '../interface';
 import { Link } from 'react-router-dom';
 
@@ -9,8 +9,13 @@ const HomePage = ({ setUserSelected }: any) => {
   const [selectedCustomer, setSelectedCustomer] = useState<ICustomer>();
   const [selectedProducts, setSelectedProducts] = useState();
 
-  const onClick = () => {
+  /*  console.log(selectedProducts);
+  useEffect(() => {
     setUserSelected({ selectedProducts, selectedCustomer });
+  }, []); */
+
+  const onClick = () => {
+    //setUserSelected({ selectedProducts, selectedCustomer });
   };
 
   return (

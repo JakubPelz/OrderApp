@@ -1,7 +1,8 @@
 import axios from 'axios';
-import { SyntheticEvent, useEffect, useState } from 'react';
+import { SyntheticEvent, useEffect, useState, useContext } from 'react';
 import { ICustomer } from '../interface';
 import { getBasePath } from '../utils/PathHelper';
+import { CustomerContext } from '../context';
 
 const CustomerInfo = ({ setSelectedCustomer }: any) => {
   const [customerName, setCustomerName] = useState('');
@@ -19,6 +20,9 @@ const CustomerInfo = ({ setSelectedCustomer }: any) => {
     zipCode,
   });
 
+  const user = useContext(CustomerContext);
+
+  console.log(user);
   const onButtonClick = async (e: SyntheticEvent) => {
     e.preventDefault();
     setCustomer({ customerName, companyName, email, city, street, zipCode });

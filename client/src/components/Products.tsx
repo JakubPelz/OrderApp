@@ -26,8 +26,6 @@ const Products = ({ setSelectedProducts }: any) => {
         setProducts(data);
       })();
     }
-    setFinalProduct({ counterBlue, counterRed, counterTwoHanded });
-    setSelectedProducts(finalProduct);
   }, []);
 
   const onPlusClick = () => {
@@ -38,10 +36,33 @@ const Products = ({ setSelectedProducts }: any) => {
     setCounterBlue(counterBlue - 1);
   };
 
+  const onPlusClickRed = () => {
+    setCounterRed(counterRed + 1);
+  };
+
+  const onMinusClickRed = () => {
+    setCounterRed(counterRed - 1);
+  };
+
+  const onPlusClickTwoHanded = () => {
+    setCounterTwoHanded(counterTwoHanded + 1);
+  };
+
+  const onMinusClickTwoHanded = () => {
+    setCounterTwoHanded(counterTwoHanded - 1);
+  };
+
   const onClick = () => {
-    setFinalProduct({ counterBlue, counterRed, counterTwoHanded });
+    setFinalProduct({
+      counterTwoHanded,
+      counterRed,
+      counterBlue,
+    });
+    setSelectedProducts(finalProduct);
     setMessage('Objednané množstvý bylo zaznamenáno.');
   };
+
+  //console.log(finalProduct);
 
   return (
     <>
@@ -144,7 +165,7 @@ const Products = ({ setSelectedProducts }: any) => {
                 </div>
                 <div className="extra content">
                   <span className="left floated like">
-                    <a onClick={() => setCounterRed(counterRed - 1)}>
+                    <a onClick={onMinusClickRed}>
                       <i className="minus icon"></i>
                     </a>
                   </span>
@@ -152,7 +173,7 @@ const Products = ({ setSelectedProducts }: any) => {
                     V košíku máte: {counterRed} Ks
                   </span>
                   <span className="right floated star">
-                    <a onClick={() => setCounterRed(counterRed + 1)}>
+                    <a onClick={onPlusClickRed}>
                       <i className="plus icon"></i>
                     </a>
                   </span>
@@ -186,9 +207,7 @@ const Products = ({ setSelectedProducts }: any) => {
                 </div>
                 <div className="extra content">
                   <span className="left floated like">
-                    <a
-                      onClick={() => setCounterTwoHanded(counterTwoHanded - 1)}
-                    >
+                    <a onClick={onMinusClickTwoHanded}>
                       <i className="minus icon"></i>
                     </a>
                   </span>
@@ -196,9 +215,7 @@ const Products = ({ setSelectedProducts }: any) => {
                     V košíku máte: {counterTwoHanded} Ks
                   </span>
                   <span className="right floated star">
-                    <a
-                      onClick={() => setCounterTwoHanded(counterTwoHanded + 1)}
-                    >
+                    <a onClick={onPlusClickTwoHanded}>
                       <i className="plus icon"></i>
                     </a>
                   </span>
